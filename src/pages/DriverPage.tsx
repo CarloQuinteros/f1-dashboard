@@ -5,6 +5,7 @@ import { NotFound } from '../components/NotFound'
 import { drivers } from '../data/drivers'
 import { teams } from '../data/teams'
 import { flagUrl } from '../lib/countries'
+import { readableInk } from '../lib/readableInk'
 
 export function DriverPage() {
   const { driverId } = useParams()
@@ -16,6 +17,7 @@ export function DriverPage() {
 
   const team = teams.find((t) => t.id === driver.teamId)
   const fullName = `${driver.givenName} ${driver.familyName}`
+  const ink = team ? readableInk(team.color) : undefined
   const birthDate = new Date(`${driver.dateOfBirth}T00:00:00`).toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
@@ -23,24 +25,24 @@ export function DriverPage() {
   })
 
   return (
-    <article className="mx-auto max-w-3xl space-y-6 p-4">
-      <Link to="/" className="inline-block min-h-11 py-3 text-sm text-slate-600 underline">
-        ← All drivers
+    <article className="mx-auto max-w-4xl space-y-6 p-4 sm:p-6">
+      <Link to="/" className="inline-block min-h-11 py-3 text-sm text-mist underline underline-offset-4">
+        All drivers
       </Link>
 
-      <header className="flex items-center gap-6">
-        <FallbackImage
-          src={driver.photo}
-          alt={fullName}
-          label={driver.code}
-          className="h-24 w-24 shrink-0 rounded-full object-cover"
-        />
-        <div className="min-w-0">
-          <p className="text-sm text-slate-500">
-            #{driver.number} · {driver.code}
+      <section
+        className="flex flex-col-reverse items-end gap-6 overflow-hidden rounded-lg p-6 sm:flex-row sm:p-10"
+        style={{ backgroundColor: team?.color, color: ink }}
+      >
+        <div className="min-w-0 flex-1 space-y-3">
+          <h1 className="font-display text-4xl leading-none sm:text-6xl">
+            {driver.givenName} <span className="block">{driver.familyName}</span>
+          </h1>
+          <p className="flex items-center gap-3 text-lg">
+            <span className="font-display text-2xl leading-none">#{driver.number}</span>
+            <span className="font-semibold">{driver.code}</span>
           </p>
-          <h1 className="text-3xl font-bold text-slate-900">{fullName}</h1>
-          <p className="mt-1 flex items-center gap-2 text-slate-700">
+          <p className="flex items-center gap-2">
             <FallbackImage
               src={flagUrl(driver.nationality)}
               alt={driver.nationality}
@@ -50,23 +52,26 @@ export function DriverPage() {
             {driver.nationality}
           </p>
           {team && (
-            <Link
-              to={`/teams/${team.id}`}
-              className="mt-2 inline-block min-h-11 py-3 font-medium underline"
-              style={{ color: team.color }}
-            >
+            <Link to={`/teams/${team.id}`} className="inline-block min-h-11 py-3 font-semibold underline underline-offset-4">
               {team.name}
             </Link>
           )}
         </div>
-      </header>
 
-      <dl className="rounded-xl bg-white p-4 shadow-sm">
-        <dt className="text-sm text-slate-500">Date of birth</dt>
-        <dd className="font-medium text-slate-900">{birthDate}</dd>
+        <FallbackImage
+          src={driver.photo}
+          alt={fullName}
+          label={driver.code}
+          className="h-64 w-auto max-w-full shrink-0 object-contain object-bottom sm:h-80"
+        />
+      </section>
+
+      <dl className="rounded-lg bg-carbon p-5">
+        <dt className="text-sm text-mist">Date of birth</dt>
+        <dd className="mt-1 text-lg font-semibold text-paper">{birthDate}</dd>
       </dl>
 
-      {driver.bio && <p className="text-slate-700">{driver.bio}</p>}
+      {driver.bio && <p className="max-w-prose text-paper">{driver.bio}</p>}
 
       <DriverStats driverId={driver.id} />
     </article>

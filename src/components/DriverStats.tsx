@@ -1,25 +1,26 @@
+import type { ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { currentStandingsQuery, driverWinsQuery } from '../api/queries'
 
 interface StatProps<T> {
   label: string
   query: { isPending: boolean; isError: boolean; data?: T }
-  render: (data: T) => string
+  render: (data: T) => ReactNode
 }
 
 function Stat<T>({ label, query, render }: StatProps<T>) {
-  let value = 'Loading…'
+  let value: ReactNode = <span className="text-lg text-mist">Loading…</span>
 
   if (query.isError) {
-    value = 'Unavailable'
+    value = <span className="text-lg text-mist">Unavailable</span>
   } else if (!query.isPending && query.data !== undefined) {
     value = render(query.data)
   }
 
   return (
-    <div className="rounded-xl bg-white p-4 shadow-sm">
-      <p className="text-sm text-slate-500">{label}</p>
-      <p className="mt-1 text-2xl font-semibold text-slate-900">{value}</p>
+    <div className="rounded-lg bg-carbon p-5">
+      <p className="text-sm text-mist">{label}</p>
+      <p className="font-display mt-2 text-4xl leading-none text-paper">{value}</p>
     </div>
   )
 }
@@ -41,7 +42,16 @@ export function DriverStats({ driverId }: DriverStatsProps) {
       <Stat
         label="Current season"
         query={standing}
-        render={(s) => (s ? `P${s.position} · ${s.points} pts` : 'No standing yet')}
+        render={(s) =>
+          s ? (
+            <>
+              <span>P{s.position}</span>{' '}
+              <span className="font-sans text-xl font-semibold text-mist">{s.points} pts</span>
+            </>
+          ) : (
+            <span className="text-lg text-mist">No standing yet</span>
+          )
+        }
       />
     </section>
   )

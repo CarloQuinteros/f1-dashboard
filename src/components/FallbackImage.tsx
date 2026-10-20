@@ -16,7 +16,7 @@ export function FallbackImage({ src, alt, label, className = '' }: FallbackImage
       <div
         role="img"
         aria-label={alt}
-        className={`flex items-center justify-center bg-slate-200 font-semibold text-slate-600 ${className}`}
+        className={`font-display flex items-center justify-center bg-black/20 text-current ${className}`}
       >
         {label}
       </div>

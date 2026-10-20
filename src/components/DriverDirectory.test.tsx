@@ -32,7 +32,7 @@ describe('DriverDirectory', () => {
     fireEvent.change(searchBox(), { target: { value: 'verst' } })
 
     expect(cards()).toHaveLength(1)
-    expect(screen.getByText('Max Verstappen')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Max Verstappen' })).toBeInTheDocument()
   })
 
   it('filters by team', () => {

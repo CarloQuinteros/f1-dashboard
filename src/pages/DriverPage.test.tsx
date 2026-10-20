@@ -12,7 +12,8 @@ describe('DriverPage static details', () => {
     renderApp('/drivers/max_verstappen')
 
     expect(screen.getByRole('heading', { name: 'Max Verstappen' })).toBeInTheDocument()
-    expect(screen.getByText('#3 · VER')).toBeInTheDocument()
+    expect(screen.getByText('#3')).toBeInTheDocument()
+    expect(screen.getByText('VER')).toBeInTheDocument()
     expect(screen.getByText('Dutch')).toBeInTheDocument()
     expect(screen.getByText('30 September 1997')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Red Bull' })).toHaveAttribute('href', '/teams/red_bull')
@@ -67,7 +68,7 @@ describe('DriverPage live stats', () => {
     renderApp('/drivers/antonelli')
 
     await waitFor(() =>
-      expect(screen.getByText('Current season').parentElement).toHaveTextContent('P1 · 340 pts'),
+      expect(screen.getByText('Current season').parentElement).toHaveTextContent('P1 340 pts'),
     )
   })
 
