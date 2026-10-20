@@ -1,13 +1,23 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { DriverDirectory } from '../components/DriverDirectory'
 import { teams } from '../data/teams'
 
 export function HomePage() {
+  const { hash } = useLocation()
+
+  // Client-side navigation to /#teams does not scroll on its own.
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView()
+    }
+  }, [hash])
+
   return (
     <>
       <DriverDirectory />
 
-      <nav aria-labelledby="teams-heading" className="mx-auto max-w-6xl space-y-4 p-4">
+      <nav id="teams" aria-labelledby="teams-heading" className="mx-auto max-w-6xl scroll-mt-20 space-y-4 p-4">
         <h2 id="teams-heading" className="text-xl font-semibold text-slate-900">
           Teams
         </h2>

@@ -43,9 +43,9 @@
 
 ## 7. Layout and integration
 
-- [ ] 7.1 Add the app shell (header, navigation, routes, catch-all not-found), and verify routing tests for every route
-- [ ] 7.2 Manually check phone, tablet and desktop widths in browser dev tools and verify no horizontal scroll and usable touch targets
-- [ ] 7.3 Run `npm run build` and `npm test` together and verify both pass cleanly
+- [x] 7.1 Add the app shell (header, navigation, routes, catch-all not-found), and verify routing tests for every route
+- [x] 7.2 Manually check phone, tablet and desktop widths in browser dev tools and verify no horizontal scroll and usable touch targets
+- [x] 7.3 Run `npm run build` and `npm test` together and verify both pass cleanly
 
 ## 8. Deployment
 
