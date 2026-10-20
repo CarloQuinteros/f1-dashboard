@@ -22,4 +22,16 @@ describe('roster integrity', () => {
 
     expect(missing).toEqual([])
   })
+
+  it('every photo is an https URL', () => {
+    const insecure = drivers.filter((d) => d.photo && !d.photo.startsWith('https://')).map((d) => d.id)
+
+    expect(insecure).toEqual([])
+  })
+
+  it('only the driver with no OpenF1 headshot is missing a photo', () => {
+    const withoutPhoto = drivers.filter((d) => !d.photo).map((d) => d.id)
+
+    expect(withoutPhoto).toEqual(['arvid_lindblad'])
+  })
 })

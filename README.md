@@ -22,3 +22,5 @@ The grid is bundled in two files, and you update them by hand when drivers or te
 5. **Run `npm test`.** `integrity.test.ts` fails if a driver points at a team that doesn't exist, or if an id is malformed.
 
 Optional fields: `photo` on a driver and `logo` on a team. When one is missing or fails to load, the shared `FallbackImage` component shows a placeholder with the label it's given.
+
+Driver photos are the `headshot_url` values from OpenF1 (`https://api.openf1.org/v1/drivers?session_key=latest`), matched by driver number. The images are hosted by Formula 1, so check the terms before using them outside this personal project. Arvid Lindblad has no photo in OpenF1 yet, so he shows the placeholder.
