@@ -23,4 +23,4 @@ The grid is bundled in two files, and you update them by hand when drivers or te
 
 Optional fields: `photo` on a driver and `logo` on a team. When one is missing or fails to load, the shared `FallbackImage` component shows a placeholder with the label it's given.
 
-Driver photos are the `headshot_url` values from OpenF1 (`https://api.openf1.org/v1/drivers?session_key=latest`), matched by driver number. The images are hosted by Formula 1, so check the terms before using them outside this personal project. Arvid Lindblad has no photo in OpenF1 yet, so he shows the placeholder.
+Driver photos are the `headshot_url` images from OpenF1 (`https://api.openf1.org/v1/drivers?session_key=latest`), matched by driver number. The URLs ask Formula 1's image CDN for its 4col size (432px), because the default 1col size is only 93px and looks blurry at card size. The images are hosted by Formula 1, so check the terms before using them outside this personal project. Arvid Lindblad has no photo in OpenF1 yet, so he shows the placeholder.
