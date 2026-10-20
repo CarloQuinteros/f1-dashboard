@@ -24,10 +24,10 @@
 
 ## 4. Driver directory
 
-- [ ] 4.1 Implement a pure filter function (case-insensitive name search AND team filter) and verify unit tests for partial match, no match, combined and cleared filters
-- [ ] 4.2 Build the driver card and responsive grid (1/2/4 columns) and verify it renders all 22 drivers with no horizontal scroll at phone width
-- [ ] 4.3 Build the search bar and team filter with the empty-state message, and verify component tests for typing, filtering and clearing
-- [ ] 4.4 Make cards navigate to `/drivers/:driverId`, and verify a click test reaches the profile route
+- [x] 4.1 Implement a pure filter function (case-insensitive name search AND team filter) and verify unit tests for partial match, no match, combined and cleared filters
+- [x] 4.2 Build the driver card and responsive grid (1/2/4 columns) and verify it renders all 22 drivers with no horizontal scroll at phone width
+- [x] 4.3 Build the search bar and team filter with the empty-state message, and verify component tests for typing, filtering and clearing
+- [x] 4.4 Make cards navigate to `/drivers/:driverId`, and verify a click test reaches the profile route
 
 ## 5. Driver profile
 
