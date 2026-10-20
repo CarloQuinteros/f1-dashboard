@@ -31,15 +31,15 @@
 
 ## 5. Driver profile
 
-- [ ] 5.1 Build the profile page with static details and a not-found state for unknown ids, and verify component tests for both
-- [ ] 5.2 Add career wins and season standing sections with loading, success and unavailable states, and verify tests for each state including zero wins
-- [ ] 5.3 Link the team name to the team page, and verify navigation in a component test
+- [x] 5.1 Build the profile page with static details and a not-found state for unknown ids, and verify component tests for both
+- [x] 5.2 Add career wins and season standing sections with loading, success and unavailable states, and verify tests for each state including zero wins
+- [x] 5.3 Link the team name to the team page, and verify navigation in a component test
 
 ## 6. Team pages
 
-- [ ] 6.1 Build the team page with team info and its driver list linking to profiles, plus a not-found state, and verify component tests
-- [ ] 6.2 Add a teams list or navigation entry reachable from the home page, and verify all 11 teams are reachable without opening a driver
-- [ ] 6.3 Verify the team page renders fully with the API mocked as failing
+- [x] 6.1 Build the team page with team info and its driver list linking to profiles, plus a not-found state, and verify component tests
+- [x] 6.2 Add a teams list or navigation entry reachable from the home page, and verify all 11 teams are reachable without opening a driver
+- [x] 6.3 Verify the team page renders fully with the API mocked as failing
 
 ## 7. Layout and integration
 

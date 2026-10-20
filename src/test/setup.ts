@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom/vitest'
 import { cleanup } from '@testing-library/react'
-import { afterEach } from 'vitest'
+import { afterEach, vi } from 'vitest'
 
 // Vitest globals are off, so Testing Library cannot clean up on its own.
 afterEach(() => {
   cleanup()
+  vi.unstubAllGlobals()
 })

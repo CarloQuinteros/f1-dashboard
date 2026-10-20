@@ -1,14 +1,16 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { DriverDirectory } from './components/DriverDirectory'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { BrowserRouter } from 'react-router-dom'
+import { AppRoutes } from './AppRoutes'
 
-// Routes for the profile pages are added with tasks 5 and 6.
+const queryClient = new QueryClient()
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DriverDirectory />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </QueryClientProvider>
   )
 }
 
