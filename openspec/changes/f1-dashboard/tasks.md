@@ -17,10 +17,10 @@
 
 ## 3. Live data client
 
-- [ ] 3.1 Implement an API client for career wins using `/drivers/{id}/results/1.json?limit=1` and reading `total`, and verify with a unit test against a fixture response
-- [ ] 3.2 Implement an API client for the current-season standings and a lookup of a driver's position and points, and verify with a unit test against a fixture response
-- [ ] 3.3 Wire both through TanStack Query with long stale time, limited retries and an error state, and verify cached revisits do not refetch
-- [ ] 3.4 Confirm that `total` equals the known career wins for a driver with a documented count, and note the result in the test fixture comment
+- [x] 3.1 Implement an API client for career wins using `/drivers/{id}/results/1.json?limit=1` and reading `total`, and verify with a unit test against a fixture response
+- [x] 3.2 Implement an API client for the current-season standings and a lookup of a driver's position and points, and verify with a unit test against a fixture response
+- [x] 3.3 Wire both through TanStack Query with long stale time, limited retries and an error state, and verify cached revisits do not refetch
+- [x] 3.4 Confirm that `total` equals the known career wins for a driver with a documented count, and note the result in the test fixture comment
 
 ## 4. Driver directory
 
