@@ -1,1 +1,51 @@
 @import "tailwindcss";
+
+/* Palette taken from formula1.com's stylesheet (dark surfaces and F1 red). */
+@theme {
+  --color-asphalt: #15151e;
+  --color-carbon: #26262b;
+  --color-graphite: #303037;
+  --color-mist: #aaaaaa;
+  --color-paper: #ffffff;
+  --color-f1-red: #e10600;
+
+  --font-sans: "Titillium Web", system-ui, sans-serif;
+  --font-display: "Archivo Variable", "Titillium Web", sans-serif;
+}
+
+@layer base {
+  html {
+    background: var(--color-asphalt);
+  }
+
+  body {
+    background: var(--color-asphalt);
+    color: var(--color-paper);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-paper);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Archivo's width axis (125%) gives the wide, condensed-feel display face. */
+.font-display {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
