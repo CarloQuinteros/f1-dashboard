@@ -29,7 +29,13 @@ describe('roster integrity', () => {
     expect(insecure).toEqual([])
   })
 
-  it('only the driver with no OpenF1 headshot is missing a photo', () => {
+  it('every photo requests the 4col size, so it stays sharp at card size', () => {
+    const wrongSize = drivers.filter((d) => d.photo && !d.photo.includes('/4col/image.png')).map((d) => d.id)
+
+    expect(wrongSize).toEqual([])
+  })
+
+  it('only the driver with no headshot in the OpenF1 feed is missing a photo', () => {
     const withoutPhoto = drivers.filter((d) => !d.photo).map((d) => d.id)
 
     expect(withoutPhoto).toEqual(['arvid_lindblad'])

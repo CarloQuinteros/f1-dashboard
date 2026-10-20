@@ -1,4 +1,5 @@
 const BASE_URL = 'https://api.jolpi.ca/ergast/f1'
+const TIMEOUT_MS = 8000
 
 interface WinsResponse {
   MRData: { total: string }
@@ -23,14 +24,30 @@ export interface DriverStanding {
   points: number
 }
 
+/**
+ * GET from Jolpica. Aborts when the caller's signal fires or after TIMEOUT_MS,
+ * so a stalled request ends in an error the UI can show as unavailable.
+ */
 export async function fetchJolpica<T>(path: string, signal?: AbortSignal): Promise<T> {
-  const response = await fetch(`${BASE_URL}${path}`, { signal })
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS)
 
-  if (!response.ok) {
-    throw new Error(`Jolpica request failed with status ${response.status}`)
+  if (signal?.aborted) {
+    controller.abort()
   }
+  signal?.addEventListener('abort', () => controller.abort(), { once: true })
 
-  return (await response.json()) as T
+  try {
+    const response = await fetch(`${BASE_URL}${path}`, { signal: controller.signal })
+
+    if (!response.ok) {
+      throw new Error(`Jolpica request failed with status ${response.status}`)
+    }
+
+    return (await response.json()) as T
+  } finally {
+    clearTimeout(timer)
+  }
 }
 
 /** Career race wins, from the `total` of a driver's first-place results. */
@@ -53,14 +70,4 @@ export async function getCurrentStandings(signal?: AbortSignal): Promise<Record<
   return Object.fromEntries(
     standings.map((s) => [s.Driver.driverId, { position: Number(s.position), points: Number(s.points) }]),
   )
-}
-
-/** Current-season standing, or null when the driver is not in the standings. */
-export async function getDriverStanding(
-  driverId: string,
-  signal?: AbortSignal,
-): Promise<DriverStanding | null> {
-  const standings = await getCurrentStandings(signal)
-
-  return standings[driverId] ?? null
 }

@@ -3,7 +3,7 @@ import standingsFixture from './fixtures/current-driverstandings.json'
 // verstappen-wins.json: total 73 matches the Wikipedia infobox (73 race wins as of the
 // 2026 Singapore Grand Prix), checked 2026-10-20.
 import winsFixture from './fixtures/verstappen-wins.json'
-import { getDriverStanding, getDriverWins } from './jolpica'
+import { getCurrentStandings, getDriverWins } from './jolpica'
 
 function stubFetch(body: unknown, status = 200) {
   const fetchMock = vi.fn(async () => new Response(JSON.stringify(body), { status }))
@@ -12,6 +12,7 @@ function stubFetch(body: unknown, status = 200) {
 }
 
 afterEach(() => {
+  vi.useRealTimers()
   vi.unstubAllGlobals()
 })
 
@@ -37,24 +38,47 @@ describe('getDriverWins', () => {
 
     await expect(getDriverWins('max_verstappen')).rejects.toThrow('Unexpected win total')
   })
+
+  it('gives up on a request that never answers', async () => {
+    vi.useFakeTimers()
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        (_url: string, init: RequestInit) =>
+          new Promise((_resolve, reject) => {
+            init.signal?.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')))
+          }),
+      ),
+    )
+
+    const outcome = expect(getDriverWins('max_verstappen')).rejects.toThrow()
+    vi.advanceTimersByTime(8000)
+
+    await outcome
+  })
 })
 
-describe('getDriverStanding', () => {
-  it('returns position and points for a driver in the standings', async () => {
+describe('getCurrentStandings', () => {
+  it('returns position and points for every driver in the standings', async () => {
     stubFetch(standingsFixture)
 
-    await expect(getDriverStanding('antonelli')).resolves.toEqual({ position: 1, points: 340 })
+    const standings = await getCurrentStandings()
+
+    expect(standings['antonelli']).toEqual({ position: 1, points: 340 })
+    expect(standings['russell']).toEqual({ position: 2, points: 238 })
   })
 
-  it('returns null for a driver not in the standings', async () => {
+  it('leaves out a driver who is not in the standings', async () => {
     stubFetch(standingsFixture)
 
-    await expect(getDriverStanding('bottas')).resolves.toBeNull()
+    const standings = await getCurrentStandings()
+
+    expect(standings['bottas']).toBeUndefined()
   })
 
-  it('returns null before any standings exist', async () => {
+  it('returns an empty map before any standings exist', async () => {
     stubFetch({ MRData: { StandingsTable: { StandingsLists: [] } } })
 
-    await expect(getDriverStanding('antonelli')).resolves.toBeNull()
+    await expect(getCurrentStandings()).resolves.toEqual({})
   })
 })

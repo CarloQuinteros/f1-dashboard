@@ -45,7 +45,7 @@ export function DriverPage() {
           <p className="flex items-center gap-2">
             <FallbackImage
               src={flagUrl(driver.nationality)}
-              alt={driver.nationality}
+              alt=""
               label={driver.nationality}
               className="h-4 w-6 shrink-0 object-cover"
             />

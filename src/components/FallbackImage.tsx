@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 interface FallbackImageProps {
   src?: string | null
+  /** Empty for decorative images that sit next to the same information as text. */
   alt: string
   /** Shown in the placeholder, e.g. a driver code or team initials. */
   label: string
@@ -12,10 +13,13 @@ export function FallbackImage({ src, alt, label, className = '' }: FallbackImage
   const [failedSrc, setFailedSrc] = useState<string | null>(null)
 
   if (!src || failedSrc === src) {
+    const decorative = alt === ''
+
     return (
       <div
-        role="img"
-        aria-label={alt}
+        role={decorative ? undefined : 'img'}
+        aria-label={decorative ? undefined : alt}
+        aria-hidden={decorative || undefined}
         className={`font-display flex items-center justify-center bg-black/20 text-current ${className}`}
       >
         {label}
