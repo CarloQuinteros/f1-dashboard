@@ -1,0 +1,28 @@
+import type { Driver } from '../types/f1'
+
+// Source: Jolpica results for the 2026 grid, after round 17 (Singapore).
+// Reserve and test drivers are excluded.
+export const drivers: Driver[] = [
+  { id: 'max_verstappen', number: 3, code: 'VER', givenName: 'Max', familyName: 'Verstappen', nationality: 'Dutch', dateOfBirth: '1997-09-30', teamId: 'red_bull', bio: null },
+  { id: 'hadjar', number: 6, code: 'HAD', givenName: 'Isack', familyName: 'Hadjar', nationality: 'French', dateOfBirth: '2004-09-28', teamId: 'red_bull', bio: null },
+  { id: 'lawson', number: 30, code: 'LAW', givenName: 'Liam', familyName: 'Lawson', nationality: 'New Zealander', dateOfBirth: '2002-02-11', teamId: 'rb', bio: null },
+  { id: 'arvid_lindblad', number: 41, code: 'LIN', givenName: 'Arvid', familyName: 'Lindblad', nationality: 'British', dateOfBirth: '2007-08-08', teamId: 'rb', bio: null },
+  { id: 'leclerc', number: 16, code: 'LEC', givenName: 'Charles', familyName: 'Leclerc', nationality: 'Monegasque', dateOfBirth: '1997-10-16', teamId: 'ferrari', bio: null },
+  { id: 'hamilton', number: 44, code: 'HAM', givenName: 'Lewis', familyName: 'Hamilton', nationality: 'British', dateOfBirth: '1985-01-07', teamId: 'ferrari', bio: null },
+  { id: 'antonelli', number: 12, code: 'ANT', givenName: 'Andrea Kimi', familyName: 'Antonelli', nationality: 'Italian', dateOfBirth: '2006-08-25', teamId: 'mercedes', bio: null },
+  { id: 'russell', number: 63, code: 'RUS', givenName: 'George', familyName: 'Russell', nationality: 'British', dateOfBirth: '1998-02-15', teamId: 'mercedes', bio: null },
+  { id: 'norris', number: 1, code: 'NOR', givenName: 'Lando', familyName: 'Norris', nationality: 'British', dateOfBirth: '1999-11-13', teamId: 'mclaren', bio: null },
+  { id: 'piastri', number: 81, code: 'PIA', givenName: 'Oscar', familyName: 'Piastri', nationality: 'Australian', dateOfBirth: '2001-04-06', teamId: 'mclaren', bio: null },
+  { id: 'alonso', number: 14, code: 'ALO', givenName: 'Fernando', familyName: 'Alonso', nationality: 'Spanish', dateOfBirth: '1981-07-29', teamId: 'aston_martin', bio: null },
+  { id: 'stroll', number: 18, code: 'STR', givenName: 'Lance', familyName: 'Stroll', nationality: 'Canadian', dateOfBirth: '1998-10-29', teamId: 'aston_martin', bio: null },
+  { id: 'gasly', number: 10, code: 'GAS', givenName: 'Pierre', familyName: 'Gasly', nationality: 'French', dateOfBirth: '1996-02-07', teamId: 'alpine', bio: null },
+  { id: 'colapinto', number: 43, code: 'COL', givenName: 'Franco', familyName: 'Colapinto', nationality: 'Argentine', dateOfBirth: '2003-05-27', teamId: 'alpine', bio: null },
+  { id: 'sainz', number: 55, code: 'SAI', givenName: 'Carlos', familyName: 'Sainz', nationality: 'Spanish', dateOfBirth: '1994-09-01', teamId: 'williams', bio: null },
+  { id: 'albon', number: 23, code: 'ALB', givenName: 'Alexander', familyName: 'Albon', nationality: 'Thai', dateOfBirth: '1996-03-23', teamId: 'williams', bio: null },
+  { id: 'bearman', number: 87, code: 'BEA', givenName: 'Oliver', familyName: 'Bearman', nationality: 'British', dateOfBirth: '2005-05-08', teamId: 'haas', bio: null },
+  { id: 'ocon', number: 31, code: 'OCO', givenName: 'Esteban', familyName: 'Ocon', nationality: 'French', dateOfBirth: '1996-09-17', teamId: 'haas', bio: null },
+  { id: 'hulkenberg', number: 27, code: 'HUL', givenName: 'Nico', familyName: 'Hülkenberg', nationality: 'German', dateOfBirth: '1987-08-19', teamId: 'audi', bio: null },
+  { id: 'bortoleto', number: 5, code: 'BOR', givenName: 'Gabriel', familyName: 'Bortoleto', nationality: 'Brazilian', dateOfBirth: '2004-10-14', teamId: 'audi', bio: null },
+  { id: 'perez', number: 11, code: 'PER', givenName: 'Sergio', familyName: 'Pérez', nationality: 'Mexican', dateOfBirth: '1990-01-26', teamId: 'cadillac', bio: null },
+  { id: 'bottas', number: 77, code: 'BOT', givenName: 'Valtteri', familyName: 'Bottas', nationality: 'Finnish', dateOfBirth: '1989-08-28', teamId: 'cadillac', bio: null },
+]

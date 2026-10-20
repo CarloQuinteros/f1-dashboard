@@ -25,7 +25,7 @@ Findings from probing the Jolpica F1 API (`https://api.jolpi.ca/ergast/f1`):
 ## Decisions
 
 **1. Static roster is the source of truth for the grid.**
-Drivers and teams live in typed data modules in the repo (22 drivers, 10 teams: ids, names, number, nationality, birth date, team, photo, colors, bios, base, principal). The API is only used for numbers that change per race.
+Drivers and teams live in typed data modules in the repo (22 drivers, 11 teams: ids, names, number, nationality, birth date, team, photo, colors, bios, base, principal). The API is only used for numbers that change per race.
 *Alternative:* derive the grid from `/current/drivers` or `/current/driverstandings`. Rejected: it includes reserves, has no team mapping, and would make the whole app depend on the network.
 
 **2. Each static driver carries its Jolpica `driverId`.**

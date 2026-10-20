@@ -1,32 +1,24 @@
-# React + TypeScript + Vite
+# F1 Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A responsive web app for the current F1 grid: every driver and team, with search, filters, and detail pages. Built with Vite, React and TypeScript.
 
-Currently, two official plugins are available:
+## Getting started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install      # install dependencies
+npm run dev      # local dev server at http://localhost:5173
+npm test         # run the test suite
+npm run build    # type-check and build for production
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Updating the roster
+
+The grid is bundled in two files, and you update them by hand when drivers or teams change.
+
+1. **Teams:** edit `src/data/teams.ts`. Each team's `id` is its Jolpica `constructorId`, for example `red_bull`.
+2. **Drivers:** edit `src/data/drivers.ts`. Each driver's `id` is its Jolpica `driverId`, for example `max_verstappen`. Set `teamId` to a team `id` from step 1.
+3. **Check the ids:** list a team's drivers at `https://api.jolpi.ca/ergast/f1/2026/constructors/<constructorId>/drivers.json` and compare the `driverId` values.
+4. **Update the counts:** `src/data/roster.test.ts` expects 22 drivers and 11 teams. If the grid changes size, update those numbers.
+5. **Run `npm test`.** `integrity.test.ts` fails if a driver points at a team that doesn't exist, or if an id is malformed.
+
+Optional fields: `photo` on a driver and `logo` on a team. When one is missing or fails to load, the shared `FallbackImage` component shows a placeholder with the label it's given.

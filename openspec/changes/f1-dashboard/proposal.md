@@ -27,7 +27,7 @@ There is no F1 app yet. The goal is a quick, phone-friendly way to look up every
 ## Impact
 
 - New application code: the project currently contains only OpenSpec scaffolding, so this introduces the whole app (Vite, React, TypeScript, React Router, TanStack Query, Tailwind CSS, Vitest).
-- New bundled data files for the 22 race seats and 10 teams that must be maintained by hand when the grid changes.
+- New bundled data files for the 22 race seats and 11 teams that must be maintained by hand when the grid changes.
 - External dependency on the Jolpica F1 API (read-only, client-side). CORS behavior and rate limits are unverified and are addressed in the design.
 - New repository setup (git, GitHub) and Vercel deployment configuration.
 - Out of scope: reserve/test drivers, historical drivers and seasons, race results, live timing, accounts, and any backend.

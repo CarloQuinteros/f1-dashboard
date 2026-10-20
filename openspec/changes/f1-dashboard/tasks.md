@@ -9,11 +9,11 @@
 
 ## 2. Static data and domain model
 
-- [ ] 2.1 Define TypeScript types for Driver and Team (including the Jolpica `driverId` and team color) and verify `tsc` compiles
-- [ ] 2.2 Add bundled data for the 22 race drivers and 10 teams (names, numbers, nationality, birth date, team, colors, bios, base, principal) and verify the count and ids by a unit test
-- [ ] 2.3 Add image assets or placeholders for drivers and teams with a fallback for missing images, and verify the fallback renders in a component test
-- [ ] 2.4 Add a data integrity test that every driver references an existing team and has a `driverId`, and verify it passes
-- [ ] 2.5 Write a short README section on updating the roster when the grid changes, and verify the steps match the data file structure
+- [x] 2.1 Define TypeScript types for Driver and Team (including the Jolpica `driverId` and team color) and verify `tsc` compiles
+- [x] 2.2 Add bundled data for the 22 race drivers and 11 teams (names, numbers, nationality, birth date, team, colors, bios, base, principal) and verify the count and ids by a unit test
+- [x] 2.3 Add image assets or placeholders for drivers and teams with a fallback for missing images, and verify the fallback renders in a component test
+- [x] 2.4 Add a data integrity test that every driver references an existing team and has a `driverId`, and verify it passes
+- [x] 2.5 Write a short README section on updating the roster when the grid changes, and verify the steps match the data file structure
 
 ## 3. Live data client
 
@@ -38,7 +38,7 @@
 ## 6. Team pages
 
 - [ ] 6.1 Build the team page with team info and its driver list linking to profiles, plus a not-found state, and verify component tests
-- [ ] 6.2 Add a teams list or navigation entry reachable from the home page, and verify all 10 teams are reachable without opening a driver
+- [ ] 6.2 Add a teams list or navigation entry reachable from the home page, and verify all 11 teams are reachable without opening a driver
 - [ ] 6.3 Verify the team page renders fully with the API mocked as failing
 
 ## 7. Layout and integration
