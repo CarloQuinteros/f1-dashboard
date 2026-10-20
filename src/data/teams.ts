@@ -1,7 +1,8 @@
 import type { Team } from '../types/f1'
 
-// Source for ids, names and nationalities: Jolpica 2026 constructors.
-// Colors, bases and principals are not in the API. Verify before release.
+// Ids, names and nationalities: Jolpica 2026 constructors.
+// Colors: the team-colour values on formula1.com/en/teams.
+// Bases and principals are not in either source. Verify before release.
 export const teams: Team[] = [
   {
     id: 'red_bull',
@@ -61,7 +62,7 @@ export const teams: Team[] = [
     id: 'alpine',
     name: 'Alpine',
     nationality: 'French',
-    color: '#FF87BC',
+    color: '#00A1E8',
     base: 'Enstone, UK',
     teamPrincipal: null,
     bio: null,
@@ -70,7 +71,7 @@ export const teams: Team[] = [
     id: 'williams',
     name: 'Williams',
     nationality: 'British',
-    color: '#64C4FF',
+    color: '#1868DB',
     base: 'Grove, UK',
     teamPrincipal: 'James Vowles',
     bio: null,
@@ -79,7 +80,7 @@ export const teams: Team[] = [
     id: 'haas',
     name: 'Haas',
     nationality: 'American',
-    color: '#B6BABD',
+    color: '#DEE1E2',
     base: 'Kannapolis, USA',
     teamPrincipal: null,
     bio: null,
@@ -88,7 +89,7 @@ export const teams: Team[] = [
     id: 'audi',
     name: 'Audi',
     nationality: 'German',
-    color: '#BB0A30',
+    color: '#FF2D00',
     base: 'Hinwil, Switzerland',
     teamPrincipal: null,
     bio: null,
@@ -97,7 +98,7 @@ export const teams: Team[] = [
     id: 'cadillac',
     name: 'Cadillac',
     nationality: 'American',
-    color: '#A89968',
+    color: '#AAAAAD',
     base: 'Silverstone, UK',
     teamPrincipal: 'Graeme Lowdon',
     bio: null,
